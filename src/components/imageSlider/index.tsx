@@ -34,21 +34,21 @@ function ImageSlider(props: ImageSliderProps) {
   }, [images.length, position]);
 
   return (
-    <div className="relative w-full h-[80%] flex">
+    <div className="relative w-full h-[80%] flex max-md:h-[20%]">
       <Button
         onClick={handlePrev}
-        className="absolute z-20 h-full bg-transparent hover:bg-black"
+        className="absolute z-20 h-full bg-transparent hover:bg-black max-md:h-[20%]"
       >
         <FontAwesomeIcon icon={faChevronLeft} className="text-white text-6xl" />
       </Button>
       <Image
         alt={images[position].alt}
         src={images[position].src}
-        className="h-full"
+        className="h-full max-md:h-[20%]"
       />
       <Button
         onClick={handleNext}
-        className="absolute right-0 z-20 h-full bg-transparent hover:bg-black"
+        className="absolute right-0 z-20 h-full bg-transparent hover:bg-black max-md:h-[20%]"
       >
         <FontAwesomeIcon
           icon={faChevronRight}
