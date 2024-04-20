@@ -34,7 +34,7 @@ function ImageSlider(props: ImageSliderProps) {
   }, [images.length, position]);
 
   return (
-    <div className="relative w-full h-[80%] flex max-md:h-full">
+    <div className="relative w-full h-[80%] flex max-md:h-[40vh]">
       <Button
         onClick={handlePrev}
         className="absolute z-20 h-full bg-transparent hover:bg-black max-md:h-full"

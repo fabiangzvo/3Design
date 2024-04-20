@@ -13,10 +13,13 @@ import {
   Button,
 } from "@nextui-org/react";
 
+import { useMediaQuery } from "@hooks/useMediaQuery";
+
 import { MenuItems } from "./constants";
 
 function NavbarPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isSm = useMediaQuery("(max-width: 640px)");
 
   const { items, ariaLAbel } = useMemo(() => {
     const items = MenuItems.map((item) => (
@@ -30,15 +33,31 @@ function NavbarPage() {
         </Link>
       </NavbarItem>
     ));
+
+    isSm &&
+      items.push(
+        <NavbarItem>
+          <Button
+            as={Link}
+            color="primary"
+            href="/contact"
+            variant="flat"
+            className="text-lg"
+          >
+            Contacto
+          </Button>
+        </NavbarItem>
+      );
+
     const ariaLAbel = isMenuOpen ? "Close menu" : "Open menu";
 
     return { ariaLAbel, items };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, isSm]);
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
       <NavbarMenuToggle aria-label={ariaLAbel} className="sm:hidden" />
-      <NavbarBrand className="font-extrabold text-lg">
+      <NavbarBrand className="font-extrabold text-lg hidden sm:block">
         <Image src="/logo-black.png" height={50} width={50} alt="Logo" />
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
@@ -51,10 +70,13 @@ function NavbarPage() {
             color="primary"
             href="/contact"
             variant="flat"
-            className="text-lg"
+            className="text-lg hidden sm:block"
           >
             Contacto
           </Button>
+          <NavbarBrand className="font-extrabold text-lg block sm:hidden">
+            <Image src="/logo-black.png" height={50} width={50} alt="Logo" />
+          </NavbarBrand>
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>{items}</NavbarMenu>
