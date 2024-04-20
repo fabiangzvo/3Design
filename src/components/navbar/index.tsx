@@ -1,4 +1,5 @@
 "use client";
+
 import { useMemo, useState } from "react";
 import {
   Navbar,
@@ -7,7 +8,7 @@ import {
   NavbarItem,
   NavbarMenuToggle,
   NavbarMenu,
-  NavbarMenuItem,
+  Image,
   Link,
   Button,
 } from "@nextui-org/react";
@@ -37,7 +38,9 @@ function NavbarPage() {
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
       <NavbarMenuToggle aria-label={ariaLAbel} className="sm:hidden" />
-      <NavbarBrand className="font-extrabold text-lg">3Design</NavbarBrand>
+      <NavbarBrand className="font-extrabold text-lg">
+        <Image src="/logo-black.png" height={50} width={50} alt="Logo" />
+      </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         {items}
       </NavbarContent>

@@ -11,7 +11,7 @@ const images = [
 export default function Home() {
   return (
     <main className="flex min-h-[95vh] justify-between px-20 max-md:flex-col max-md:justify-start max-md:px-4">
-      <div className="w-3/5 flex justify-center items-center max-md:w-full max-md:h-[20%]">
+      <div className="w-3/5 flex justify-center items-center max-md:w-full max-md:h-[40%]">
         <ImageSlider images={images} />
       </div>
       <div className="w-2/5 flex flex-col justify-center px-10 max-md:w-full max-md:p-4">
