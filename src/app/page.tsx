@@ -19,13 +19,17 @@ export default function Home() {
   const handleClick = useCallback(() => router.push("/store"), [router]);
 
   return (
-    <main className="flex flex-col min-h-screen px-20 max-md:flex-col max-md:justify-start max-md:px-4">
-      <div className="flex min-h-[95vh] justify-between max-md:flex-col max-md:justify-start max-md:px-4">
+    <main className="w-full flex flex-col min-h-screen px-20 max-md:flex-col max-md:justify-start max-md:px-4">
+      <div className="w-full flex min-h-[90vh] justify-between max-md:flex-col max-md:justify-start max-md:px-4">
         <div className="w-3/5 flex justify-center items-center max-md:w-full max-md:mt-5">
-          <Image src="/start-print.jpg" alt="3d-print" />
+          <Image
+            src="/print.jpg"
+            alt="3d-print"
+            className="h-[80vh] max-md:h-full"
+          />
         </div>
-        <div className="w-2/5 flex flex-col justify-center px-10 max-md:w-full max-md:p-4">
-          <h1 className="text-5xl font-bold mb-4 text-center">
+        <div className="w-2/5 flex flex-col justify-center pl-10 max-md:w-full max-md:p-4">
+          <h1 className="text-5xl font-bold mb-4 text-center max-md:text-3xl">
             Diseños únicos, hechos para ti
           </h1>
           <p className="mb-8 text-center">
@@ -36,9 +40,9 @@ export default function Home() {
           <Button label="Ver catálogo" onClick={handleClick} />
         </div>
       </div>
-      <div className="w-full mt-6 flex justify-between items-start mb-8 max-md:flex-col">
+      <div className="w-full mt-4 flex justify-between items-start mb-8 max-md:flex-col">
         <div className="flex flex-col items-center w-1/3 p-4 max-md:w-full">
-          <FontAwesomeIcon className="text-5xl" icon={faLightbulb} />
+          <FontAwesomeIcon size="3x" icon={faLightbulb} />
           <span className="text-3xl text-center font-bold mb-4 mt-2">
             Libertad de diseño
           </span>
@@ -48,7 +52,7 @@ export default function Home() {
           </p>
         </div>
         <div className="flex flex-col items-center w-1/3 p-4 max-md:w-full">
-          <FontAwesomeIcon className="text-5xl" icon={faRocket} />
+          <FontAwesomeIcon size="3x" icon={faRocket} />
           <span className="text-3xl text-center font-bold mb-4 mt-2">
             Creación rápida de prototipos
           </span>
@@ -58,7 +62,7 @@ export default function Home() {
           </p>
         </div>
         <div className="flex flex-col items-center w-1/3 p-4 max-md:w-full">
-          <FontAwesomeIcon className="text-5xl" icon={faIndustry} />
+          <FontAwesomeIcon size="3x" icon={faIndustry} />
           <span className="text-3xl text-center font-bold mb-4 mt-2">
             Produción rentable
           </span>

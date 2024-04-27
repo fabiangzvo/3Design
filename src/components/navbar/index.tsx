@@ -53,8 +53,7 @@ function NavbarPage() {
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
-      <NavbarMenuToggle aria-label={ariaLAbel} className="sm:hidden" />
-      <NavbarBrand className="font-extrabold text-lg hidden sm:block">
+      <NavbarBrand className="font-extrabold text-lg">
         <Image src="/logo-black.png" height={50} width={50} alt="Logo" />
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
@@ -70,9 +69,7 @@ function NavbarPage() {
               isSecondary
             />
           </div>
-          <NavbarBrand className="font-extrabold text-lg block sm:hidden">
-            <Image src="/logo-black.png" height={50} width={50} alt="Logo" />
-          </NavbarBrand>
+          <NavbarMenuToggle aria-label={ariaLAbel} className="sm:hidden" />
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
@@ -84,14 +81,4 @@ function NavbarPage() {
   );
 }
 
-/**
- * 
- * <Button
-            href="/contact"
-            variant="flat"
-            className="text-lg max-sm:hidden bg-gradient-to-tr from-[#4776E6] to-[#ba54e9] text-white shadow-lg"
-          >
-            Contacto
-          </Button>
- */
 export default NavbarPage;
