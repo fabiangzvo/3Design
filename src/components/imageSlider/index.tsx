@@ -6,12 +6,13 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
+import { images } from "./constants";
+
 interface ImageSliderProps {
   images: Array<{ alt: string; src: string }>;
 }
 
-function ImageSlider(props: ImageSliderProps) {
-  const { images } = props;
+function ImageSlider() {
   const [position, setPosition] = useState(0);
 
   const handlePrev = useCallback(() => {
@@ -21,7 +22,7 @@ function ImageSlider(props: ImageSliderProps) {
       return;
     }
     setPosition(position - 1);
-  }, [position, images.length]);
+  }, [position]);
 
   const handleNext = useCallback(() => {
     if (position === images.length - 1) {
@@ -31,7 +32,7 @@ function ImageSlider(props: ImageSliderProps) {
     }
 
     setPosition(position + 1);
-  }, [images.length, position]);
+  }, [position]);
 
   return (
     <div className="relative w-full h-[80%] flex max-md:h-[40vh]">

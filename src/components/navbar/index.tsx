@@ -36,7 +36,7 @@ function NavbarPage() {
 
     isSm &&
       items.push(
-        <NavbarItem>
+        <NavbarItem key="contact-button">
           <Button
             as={Link}
             color="primary"
@@ -66,11 +66,10 @@ function NavbarPage() {
       <NavbarContent justify="end">
         <NavbarItem>
           <Button
-            as={Link}
             color="primary"
             href="/contact"
             variant="flat"
-            className="text-lg hidden sm:block"
+            className="text-lg max-sm:hidden"
           >
             Contacto
           </Button>
@@ -79,7 +78,11 @@ function NavbarPage() {
           </NavbarBrand>
         </NavbarItem>
       </NavbarContent>
-      <NavbarMenu>{items}</NavbarMenu>
+      <NavbarMenu>
+        <NavbarContent className="flex flex-col justify-center">
+          {items}
+        </NavbarContent>
+      </NavbarMenu>
     </Navbar>
   );
 }
