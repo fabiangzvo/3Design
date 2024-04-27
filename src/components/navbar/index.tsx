@@ -1,6 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 import {
   Navbar,
   NavbarBrand,
@@ -10,16 +12,19 @@ import {
   NavbarMenu,
   Image,
   Link,
-  Button,
 } from "@nextui-org/react";
 
 import { useMediaQuery } from "@hooks/useMediaQuery";
+const ButtonComponent = dynamic(() => import("@components/button"));
 
 import { MenuItems } from "./constants";
 
 function NavbarPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isSm = useMediaQuery("(max-width: 640px)");
+  const router = useRouter();
+
+  const handleContact = useCallback(() => router.push("/contact"), [router]);
 
   const { items, ariaLAbel } = useMemo(() => {
     const items = MenuItems.map((item) => (
@@ -36,23 +41,15 @@ function NavbarPage() {
 
     isSm &&
       items.push(
-        <NavbarItem key="contact-button">
-          <Button
-            as={Link}
-            color="primary"
-            href="/contact"
-            variant="flat"
-            className="text-lg"
-          >
-            Contacto
-          </Button>
+        <NavbarItem key="contact-button" className="px-5 w-full">
+          <ButtonComponent label="Contacto" onClick={handleContact} />
         </NavbarItem>
       );
 
     const ariaLAbel = isMenuOpen ? "Close menu" : "Open menu";
 
     return { ariaLAbel, items };
-  }, [isMenuOpen, isSm]);
+  }, [isMenuOpen, isSm, handleContact]);
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
@@ -65,14 +62,14 @@ function NavbarPage() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem>
-          <Button
-            color="primary"
-            href="/contact"
-            variant="flat"
-            className="text-lg max-sm:hidden"
-          >
-            Contacto
-          </Button>
+          <div className="max-sm:hidden flex group min-w-[120px] items-center font-semibold text-foreground shadow-sm gap-1.5 relative overflow-hidden rounded-full p-[2px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+            <span className="absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#F54180_0%,#4776E6_50%,#F54180_100%)]"></span>
+            <ButtonComponent
+              label="Contacto"
+              onClick={handleContact}
+              isSecondary
+            />
+          </div>
           <NavbarBrand className="font-extrabold text-lg block sm:hidden">
             <Image src="/logo-black.png" height={50} width={50} alt="Logo" />
           </NavbarBrand>
@@ -87,4 +84,14 @@ function NavbarPage() {
   );
 }
 
+/**
+ * 
+ * <Button
+            href="/contact"
+            variant="flat"
+            className="text-lg max-sm:hidden bg-gradient-to-tr from-[#4776E6] to-[#ba54e9] text-white shadow-lg"
+          >
+            Contacto
+          </Button>
+ */
 export default NavbarPage;
