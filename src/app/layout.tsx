@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Manrope } from "next/font/google";
 import cs from "classnames";
+import Link from "next/link";
 
 import Providers from "@contexts";
 import Navbar from "@components/navbar";
@@ -42,6 +43,20 @@ export default function RootLayout({
           {children}
         </Providers>
       </body>
+      <footer className="w-full flex justify-between items-between pb-5 px-12">
+        <div className="flex flex-col max-md:ml-6">
+          <Link
+            href="/"
+            className="font-extrabold text-2xl max-md:text-4xl cursor-pointer"
+          >
+            3Design
+          </Link>
+          <p className="max-md:text-2xl pointer-events-none">
+            All rights reserved © 2023
+          </p>
+        </div>
+        <div />
+      </footer>
     </html>
   );
 }
