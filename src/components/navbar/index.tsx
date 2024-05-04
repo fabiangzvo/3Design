@@ -25,6 +25,7 @@ function NavbarPage() {
   const router = useRouter();
 
   const handleContact = useCallback(() => router.push("/contact"), [router]);
+  const goToHome = useCallback(() => router.push("/#main"), [router]);
 
   const { items, ariaLAbel } = useMemo(() => {
     const items = MenuItems.map((item) => (
@@ -53,7 +54,7 @@ function NavbarPage() {
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
-      <NavbarBrand className="font-extrabold text-lg">
+      <NavbarBrand className="font-extrabold text-lg" onClick={goToHome}>
         <Image src="/logo-black.png" height={50} width={50} alt="Logo" />
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
